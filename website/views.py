@@ -18,7 +18,7 @@ def home(request):
             messages.success(request , 'You Have Loged In Succesfully ')
             return redirect('home')
         else :
-            messages.success(request, 'Invalid user. Register First To Continue!')
+            messages.success(request, 'Invalid user. If You Dont have Account Register First To Continue!')
             return redirect('home')
 
 
@@ -75,6 +75,9 @@ def add_customer(request):
             form = AddCustomer(request.POST or None)
             if form.is_valid():
                 form.save()
+                customer = form.save(commit=False)
+                customer.created_by = request.user  
+                customer.save()
                 messages.success(request , 'You have Added Customer successfully')
                 return redirect('home')
         else:
@@ -95,6 +98,6 @@ def update_customer(request, pk):
                 return redirect('home')
           else:
               form = AddCustomer(request.POST or None , instance= update_customer)
-              return render (request , 'update_customer.html',{'form':form})
+              return render (request , 'update_customer.html',{'form':form , })
             
           

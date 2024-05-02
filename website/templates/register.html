@@ -7,7 +7,7 @@
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Error(s):</strong> 
     <ul>
-        {{form.errors.items}}
+      
       {% for field, errors in form.errors.items %}
         {% for error in errors %}
           <li>{{ field }}: {{ error }}</li>

@@ -3,7 +3,7 @@
 {% block content %}
     {% if user.is_authenticated %}
 
-        <h1>Hello {{ user }}</h1>
+        <h1>Hello 👋 {{ user }}</h1>
         <div class="table-responsive">
         <table class="table table table-striped table  table table-hover  table table-bordered"  >
             <thead  class ="table-dark">
@@ -13,6 +13,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">City</th>
+                <th scope="col">Found by</th>
               </tr>
             </thead>
             <tbody>
@@ -26,6 +27,7 @@
                         <td>{{ customer.email }}</td>
                         <td>{{ customer.phone_numer}}</td>
                         <td>{{ customer.city }}</td>
+                        <td> {{ customer.created_by }}</td>
                     </tr>
                     {% endfor %}
                     
