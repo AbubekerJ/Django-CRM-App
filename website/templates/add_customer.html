@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Add Customer</h1>
+
+    <form method="post" action="{% url 'add_customer' %}" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.first_name.label_tag }}
+            <input type="text" name="first_name" class="form-control" id="id_first_name" required>
+            <div class="invalid-feedback">{{ form.first_name.errors }}</div>
+        </div>
+        <div class="mb-3">
+            {{ form.last_name.label_tag }}
+            <input type="text" name="last_name" class="form-control" id="id_last_name" required>
+            <div class="invalid-feedback">{{ form.last_name.errors }}</div>
+        </div>
+        <div class="mb-3">
+            {{ form.email.label_tag }}
+            <input type="email" name="email" class="form-control" id="id_email" placeholder='Not That Much Required'>
+            <div class="invalid-feedback">{{ form.email.errors }}</div>
+        </div>
+        <div class="mb-3">
+            {{ form.phone_numer.label_tag }}
+            <input type="text" name="phone_numer" class="form-control" id="id_phone_numer" required>
+            <div class="invalid-feedback">{{ form.phone_numer.errors }}</div>
+        </div>
+        <div class="mb-3">
+            {{ form.city.label_tag }}
+            <input type="text" name="city" class="form-control" id="id_city" required>
+            <div class="invalid-feedback">{{ form.city.errors }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+{% endblock %}
+
+
+

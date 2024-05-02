@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card border-primary shadow">
+        <div class="card-body">
+            <h5 class="card-title text-primary mb-4">Customer Details</h5>
+            <hr>
+            <p class="card-text">
+                <strong class="text-secondary fs-5">First Name:</strong><br>
+                {{ the_customer.first_name }}<br>
+                <strong class="text-secondary fs-5">Last Name:</strong><br>
+                {{ the_customer.last_name }}<br>
+                <strong class="text-secondary fs-5">Email:</strong><br>
+                {{ the_customer.email }}<br>
+                <strong class="text-secondary fs-5">Phone Number:</strong><br>
+                {{ the_customer.phone_numer }}<br>
+                <strong class="text-secondary fs-5">City:</strong><br>
+                {{ the_customer.city }}<br>
+            </p>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+            <a href="{% url 'delete_customer' the_customer.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'update_customer' the_customer.pk %}" class="btn btn-primary">Update Customer Record</a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+

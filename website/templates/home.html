@@ -1,11 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    This is home 
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+
+        <h1>Hello {{ user }}</h1>
+        <div class="table-responsive">
+        <table class="table table table-striped table  table table-hover  table table-bordered"  >
+            <thead  class ="table-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>           
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">City</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    {% for customer in customers %}
+                    <tr>
+                        <th scope="row"><a href="{% url 'customer' customer.pk %}">{{ forloop.counter }}</a></th>
+                        <td><a href="{% url 'customer' customer.pk %}">{{ customer.first_name }} {{ customer.last_name }}</a></td>
+                        
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.phone_numer}}</td>
+                        <td>{{ customer.city }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+            </tbody>
+        </table>
+    </div>
+               
+               
+              
+               
+              
+               
+        
+
+    {% else %}
+        <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div style="max-width: 400px; width: 100%; border: 1px solid #ccc; border-radius: 10px; padding: 20px; background-color: #f9f9f9;">
+                <h1 style="text-align: center; margin-bottom: 20px;">Log In</h1>
+
+                <form method='POST' action="{% url 'home' %}">  
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" name='username' placeholder='Username'>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name= 'password' placeholder='Password'>
+                    </div>
+                  
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
