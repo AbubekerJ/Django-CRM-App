@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3p3%bhz(2=1r*asah344xsx-hei$t6pvq%73tdrcy!i&y2_-b3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'sPhhtruuLUkiCJHTAGmMWxZmzNqTwnQX',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '45955',
     }
 }
 
