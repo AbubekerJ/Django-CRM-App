@@ -72,9 +72,9 @@ def delete_customer(request ,pk):
 def add_customer(request):
     if request.user.is_authenticated:
         if request.method =='POST':
-            form = AddCustomer(request.POST or None)
+            form = AddCustomer(request.POST)
             if form.is_valid():
-                form.save()
+                
                 customer = form.save(commit=False)
                 customer.created_by = request.user  
                 customer.save()
