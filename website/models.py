@@ -11,6 +11,7 @@ class Customer(models.Model):
      email =models.EmailField( max_length=254, blank=True, null=True)
      phone_numer= models.CharField(max_length=20)
      city =models.CharField( max_length=50)
+     date = models.DateTimeField(auto_now_add=True ,null = True ,)
      created_by = models.ForeignKey(User, on_delete=models.CASCADE , null=True)
     
 
